@@ -1,6 +1,6 @@
 package PalindromeCheckerApp;
 
-class UseCasePalindromeCheckerApp {
+public class usecase4palindromecheckerapp {
     public static void main(String[] args) {
         String text = "MADAM";
         char[] chars = text.toCharArray();
@@ -15,7 +15,6 @@ class UseCasePalindromeCheckerApp {
             left++;
             right--;
         }
-        System.out.println("text given is :"+text);
         if (isPalindrome) {
             System.out.println("Is Palindrome: " + isPalindrome);
         } else {
