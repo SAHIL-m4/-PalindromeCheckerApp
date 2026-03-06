@@ -1,37 +1,37 @@
 package PalindromeCheckerApp;
-
 import java.util.Scanner;
+import java.util.Stack;
 public class UseCasePalindromeCheckerApp {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Input: ");
+        System.out.print("Input : ");
         String input = scanner.nextLine();
-        PalindromeService service = new PalindromeService();
-        boolean result = service.checkPalindrome(input);
 
-        System.out.println("Is Palindrome?: " + result);
+        PalindromeStrategy strategy = new StackStrategy();
+
+        boolean isPalindrome = strategy.check(input);
+
+        System.out.println("Is Palindrome? : " + isPalindrome);
 
         scanner.close();
     }
 }
-
-class PalindromeService {
-
-    public boolean checkPalindrome(String input) {
-
-        int start = 0;
-        int end = input.length() - 1;
-        while (start < end) {
-
-            if (input.charAt(start) != input.charAt(end)) {
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+class StackStrategy implements PalindromeStrategy {
+    @Override
+    public boolean check(String input) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 return false;
             }
-
-            start++;
-            end--;
         }
+
         return true;
     }
 }
-
-
-
