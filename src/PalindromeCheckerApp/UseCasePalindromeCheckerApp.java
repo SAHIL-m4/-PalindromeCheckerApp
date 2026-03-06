@@ -1,31 +1,19 @@
 package PalindromeCheckerApp;
-
 import java.util.Scanner;
 public class UseCasePalindromeCheckerApp {
-     public static void main(String[] args){
-         Scanner scanner = new Scanner(System.in);
-         System.out.println("Enter your string : ");
-         String input = scanner.nextLine();
-         boolean isPalindrome=true;
-         String correct = input.toLowerCase();
-         int length = correct.length();
-         for(int i=0;i<input.length()/2;i++) {
-             if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                 isPalindrome = false;
-                 break;
-             }
-         }
-         System.out.println("------");
-         System.out.println("PALINDROME CHECKING...............");
-         if(isPalindrome){
-             System.out.println("-> is palindrome");
-         }else{
-             System.out.println("-> NOT palindrome");
-         }
-         scanner.close();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input : ");
+        String input = scanner.nextLine();
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        boolean isPalindrome = true;
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println("Is Palindrome? : " + isPalindrome);
+        scanner.close();
     }
 }
-
-
-
-
